@@ -1,0 +1,52 @@
+/****************** reset *********************/
+
+*{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+h1,h2,h3,h4,h5,h6{font-size:1em;font-weight:normal;}
+ul,ol,li{list-style:none;}
+em,i,b{font-style:normal;font-weight:normal;}
+img{border:none;}
+input,img,video{vertical-align:middle;}
+input[type="text"],input[type="password"],input[type="button"],input[type="submit"],button,textarea{-webkit-appearance:none;border:0;outline:none;border-radius:0;}
+a{text-decoration:none;}
+body{min-width:320px;font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;}
+
+/****************** reset *********************/
+
+
+
+/****************** content *********************/
+.content { 
+	height: 500px; 
+	width: 100%;
+	margin-top: 20px;
+}
+
+.content .container:after {
+	/* content: '';
+	display: block;
+	height: 0;
+	line-height: 0;
+	clear: both; */
+}
+
+.content .container .opt{
+	float: left;
+	height: 100%;
+	width: 40%;
+	margin: 50px;
+}
+
+.content .container .opt textarea{
+	font-size: 12px;
+	width: 500px;
+	height: 400px;
+	border: #d3eace 1px solid;
+	background: #f3fff1;
+}
+
+
+
+
+/****************** content *********************/
+
