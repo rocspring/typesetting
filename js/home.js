@@ -51,7 +51,9 @@
 				len = tempArr.length;
 
 			for (; i < len; i++) {
-
+				if ( lastChartIsColon(tempArr[i]) && tempArr[i + 1] === '' ) {
+					
+				}
 			}
 
 		},
