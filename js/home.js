@@ -80,7 +80,7 @@
 				}
 			}
 
-			// 合并内容过少的段落
+			//  合并内容过少的段落
 			var paragraphLen = paragraphArr.length,
 				tempStr = '',
 				tempLen,
