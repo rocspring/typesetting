@@ -41,20 +41,39 @@
 
 		},
 
-		mergeContent : function() {
+		removeColonWrap : function() {
+			var contentArr = this.contentArr,
+				i = 0,
+				len = contentArr.length,
+				tempArr = [];
+
+			for (; i < len; i++) {
+				if ( lastChartIsColon(contentArr[i]) && contentArr[i + 1] === ' ' ) {
+					// contentArr[i + 1] = null;
+					tempArr.push(i + 1);
+				}
+			}
+
+			this.contentArr = remove( contentArr, tempArr );
+
 
 		},
 
-		removeColonWrap : function() {
-			var tempArr = this.contentArr,
+		mergeParagraph : function() {
+			var contentArr = this.contentArr,
 				i = 0,
-				len = tempArr.length;
+				j = 0,
+				len = contentArr.length,
+				paragraphArr = [];
 
-			for (; i < len; i++) {
-				if ( lastChartIsColon(tempArr[i]) && tempArr[i + 1] === '' ) {
-					
+			for( ; i < len; i++ ){
+				if (contentArr[i] !== ' ') {
+					paragraphArr[j] = [];
+					paragraphArr[j].push(contentArr[i]);
+				}else{
+					j++;
 				}
-			}
+			}	
 
 		},
 
@@ -89,6 +108,30 @@
 		var lastChart = str.charAt( str.length - 1 );
 
 		return  str.charAt( str.length - 1 ) === ':' || str.charAt( str.length - 1 ) === '：';
+	}
+
+	// 给数组添加一个删除元素方法
+	function remove (arr, index) {
+		if( typeof arr === 'object' && toString.call(arr) === '[object Array]'){
+			if ( typeof index === 'number' &&  index >= 0 ) {
+				return arr.remove ? arr.remove(index) : arr.slice(0, index).concat(arr.slice( index + 1, arr.length));
+			} else if ( typeof index === 'object' && toString.call(index) === '[object Array]' ) {
+				//传入一个下标数组，删除这些元素
+				var newArr = [];
+				for ( var i = 0, len = index.length; i < len; i++ ){
+					arr[index[i]] = void 0;
+				}
+
+				for( var j = 0, arrLen = arr.length; j < arrLen; j++ ){
+					if ( arr[j] !== void 0 ) {
+						newArr.push(arr[j]);
+					}
+				}
+
+				return newArr;
+			}
+			
+		}
 	}
 
 })(window);
