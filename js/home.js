@@ -116,7 +116,7 @@
 			if ( typeof index === 'number' &&  index >= 0 ) {
 				return arr.remove ? arr.remove(index) : arr.slice(0, index).concat(arr.slice( index + 1, arr.length));
 			} else if ( typeof index === 'object' && toString.call(index) === '[object Array]' ) {
-				//传入一个下标数组，删除这些元素
+				// 传入一个下标数组，删除这些元素
 				var newArr = [];
 				for ( var i = 0, len = index.length; i < len; i++ ){
 					arr[index[i]] = void 0;
