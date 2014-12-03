@@ -13,6 +13,48 @@
 		</div>
 	</section>
 
-	<script src="js/home.js"></script>
+	<section class="">
+		<!-- <div>
+			<input id="C1" type="checkbox" name="C1" checked="checked">
+			<lable for="C1">去掉冒号分段</lable>
+		</div>
+		<div>
+			<input id="C2" type="checkbox" name="C2" checked="checked">
+			<lable for="C2">合并相邻行</lable>
+		</div>
+		<div>
+			<input id="C3" type="checkbox" name="C3" checked="checked">
+			<lable for="C3">分割过长的段落</lable>
+		</div> -->
+
+		<div class="operate">
+			<span>操作：</span>
+			<input id="btn" type="button" class="button" name="btn" value="排版">
+		</div>
+	</section>
+
+	
+
+	<script src="js/typesetting.js"></script>
+	<script>
+		var TypeSetting = window.TypeSetting;
+
+		document.querySelector('.button').addEventListener('click', function(e){
+			var tempStr = document.querySelector('.content textarea').value;
+			var	ts = new TypeSetting({
+				content: tempStr,
+				isRemoveColnWrap: true,
+				isMergeParagraph: true,
+				isSplitParagraph: true
+			});
+
+			document.querySelectorAll('.content textarea')[1].value = ts.result;
+			console.log(ts.result);	
+		}, false);
+
+		
+
+		
+	</script>
 </body>
 </html>
