@@ -6,7 +6,7 @@
 	 *	content : '', // 排版的内容
 	 *	isRemoveColnWrap : true, // 是否去掉冒号分段
 	 *	isMergeParagraph : true, // 是否合并相邻行
-	 *	isSplitParagraph : true	// 是否分割过长的段落
+	 *	isSplitParagraph : true	//  是否分割过长的段落
 	 *}
 	 */
 	var resultArr = [];
