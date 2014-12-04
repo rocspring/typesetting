@@ -26,20 +26,25 @@
 			<input id="C3" type="checkbox" name="C3" checked="checked">
 			<lable for="C3">分割过长的段落</lable>
 		</div> -->
-
+	<input type="file" id="file" onchange="handleFiles(this.files)"/>
 		<div class="operate">
 			<span>操作：</span>
-			<input id="btn" type="button" class="button" name="btn" value="排版">
+			<input id="btnTypeSet" type="button" class="button" name="btn" value="排版">
 		</div>
 	</section>
-
+  	
+  	<input id="btnSave" type="button" class="button" name="btn" value="保存为文件并下载">
+  	<div id="filecontent"></div>
 	
 
 	<script src="js/typesetting.js"></script>
+	<script src="js/FileSaver.js"></script>
+	<script src="js/fileoperate.js"></script>
+
 	<script>
 		var TypeSetting = window.TypeSetting;
 
-		document.querySelector('.button').addEventListener('click', function(e){
+		document.querySelector('#btnTypeSet').addEventListener('click', function(e){
 			var tempStr = document.querySelector('.content textarea').value;
 			var	ts = new TypeSetting({
 				content: tempStr,
@@ -49,12 +54,25 @@
 			});
 
 			document.querySelectorAll('.content textarea')[1].value = ts.result;
-			console.log(ts.result);	
 		}, false);
 
-		
+		document.querySelector('#btnSave').addEventListener('click', function(e){
+			var saveData = document.querySelectorAll('.content textarea')[1].value,
+				fileNameArr = document.querySelector('#file').value.split('\\'),
+				fileName = fileNameArr[fileNameArr.length - 1].split('\.')[0];
 
-		
+			FileOperate.saveFile(saveData, fileName + '(1).txt');
+		}, false);
 	</script>
+	<script>
+	 function  handleFiles(files){
+
+	 	FileOperate.readFile(files, readCallBack);
+
+	 	function readCallBack(result){
+	 		document.querySelectorAll('.content textarea')[0].value = result;
+	 	};
+	  }
+  </script>
 </body>
 </html>

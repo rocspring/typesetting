@@ -76,7 +76,7 @@
 
 			resultLen = resultArr.length;
 			for (; k < resultLen; k++) {
-				resultStr += resultArr[k] + '\n\n';
+				resultStr += resultArr[k] + '\r\n\r\n';
 			}
 
 			this.result = resultStr;
@@ -189,7 +189,7 @@
 			tempChar = '',
 			i, j,
 			surplusStr = '',
-			endSymbolReg = /。|？|！|…|\.|\?|\!/;
+			endSymbolReg = /。|？|！|”|…|\.|\?|\!/;
 
 		if (len <= maxLen) {
 			resultArr.push(str);

@@ -52,14 +52,15 @@ body{min-width:320px;font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-ser
 
 .button{
 	height: 30px;
-	width: 80px;
+	width: 200px;
 	border: 1px solid #000;
 	cursor:pointer;
 	/*background: #123;*/
 }
 
 .operate{
-	text-align: center;
-	width: 200px;
-	margin: auto;
+	/*text-align: center;*/
+	width: 300px;
+	/*margin: auto;*/
+	margin: 30px 0;
 }
