@@ -21,8 +21,8 @@
 		},
 
 		saveFile: function(data, name) {
-			var encodeData = encodeURIComponent(data);
-			var blob = new Blob([encodeData], {type: "text/plain;charset=utf-8"});
+			var encodeData = encodeURIComponent(data),
+			blob = new Blob([encodeData], {type: "text/plain;charset=utf-8"});
 			saveAs(blob, name);
 		}
 	};
