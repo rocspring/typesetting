@@ -13,7 +13,7 @@
 		</div>
 	</section>
 
-	<section class="">
+	<section class="op">
 		<!-- <div>
 			<input id="C1" type="checkbox" name="C1" checked="checked">
 			<lable for="C1">去掉冒号分段</lable>
@@ -28,12 +28,16 @@
 		</div> -->
 	<input type="file" id="file" onchange="handleFiles(this.files)"/>
 		<div class="operate">
-			<span>操作：</span>
+			<span>排版：</span>
 			<input id="btnTypeSet" type="button" class="button" name="btn" value="排版">
+		</div>
+		<div class="operate">
+			<span>保存：</span>
+			<input id="btnSave" type="button" class="button" name="btn" value="保存为文件并下载">
 		</div>
 	</section>
   	
-  	<input id="btnSave" type="button" class="button" name="btn" value="保存为文件并下载">
+  	
   	<div id="filecontent"></div>
 	
 
@@ -42,11 +46,14 @@
 	<script src="js/fileoperate.js"></script>
 
 	<script>
-		var TypeSetting = window.TypeSetting;
+	(function(window){
+		var TypeSetting = window.TypeSetting,
+			ts = null;
 
 		document.querySelector('#btnTypeSet').addEventListener('click', function(e){
 			var tempStr = document.querySelector('.content textarea').value;
-			var	ts = new TypeSetting({
+
+			ts = new TypeSetting({
 				content: tempStr,
 				isRemoveColnWrap: true,
 				isMergeParagraph: true,
@@ -57,15 +64,18 @@
 		}, false);
 
 		document.querySelector('#btnSave').addEventListener('click', function(e){
-			var saveData = document.querySelectorAll('.content textarea')[1].value,
+			var saveData = ts.result,
 				fileNameArr = document.querySelector('#file').value.split('\\'),
 				fileName = fileNameArr[fileNameArr.length - 1].split('\.')[0];
 
 			FileOperate.saveFile(saveData, fileName + '(1).txt');
 		}, false);
-	</script>
-	<script>
-	 function  handleFiles(files){
+
+	})(window);
+		
+  </script>
+  <script>
+  	function  handleFiles(files){
 
 	 	FileOperate.readFile(files, readCallBack);
 

@@ -76,7 +76,8 @@
 
 			resultLen = resultArr.length;
 			for (; k < resultLen; k++) {
-				resultStr += resultArr[k] + '\r\n\r\n';
+				resultStr += resultArr[k] + '\r\n';
+				resultStr += '\r\n';
 			}
 
 			this.result = resultStr;

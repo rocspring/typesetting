@@ -22,7 +22,7 @@
 
 		saveFile: function(data, name) {
 			var encodeData = encodeURIComponent(data),
-			blob = new Blob([encodeData], {type: "text/plain;charset=utf-8"});
+			blob = new Blob([data], {type: "text/plain"});
 			saveAs(blob, name);
 		}
 	};
