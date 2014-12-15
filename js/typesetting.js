@@ -110,7 +110,7 @@
 				paragraphArr = [];
 
 			for (; i < len; i++) {
-				if (contentArr[i] !== '') {
+				if (contentArr[i] !== '' ||  ( contentArr[i] === '' && contentArr[i - 1] === '') ){
 					if (!isArray(paragraphArr[j])) {
 						paragraphArr[j] = [];
 					}
@@ -127,7 +127,9 @@
 				l = 0;
 
 			for (; k < paragraphLen; k++) {
+				console.log(k);
 				tempLen = paragraphArr[k].length;
+				console.log(tempLen);
 				if (tempLen >= 1) {
 					for (l = 0; l < tempLen; l++) {
 						tempStr += paragraphArr[k][l];
