@@ -17,6 +17,8 @@
 		<div>
 			注意事项：
 			<br>
+			请使用chrome浏览器操作。
+			<br>
 			需要把txt文本的编码格式修改为utf-8格式。
 			<br><br>
 			修改方法：打开文件，选择另存为，在保存按钮左边的编码格式中选择UTF-8。
@@ -24,14 +26,15 @@
 		</div>
 	<input type="file" id="file" onchange="handleFiles(this.files)"/>
 		<div class="operate">
+			<p>选择排版的内容：</p><br>
 			<div class="ckbox">
-                <input id="C1" type="checkbox" name="C1" checked="checked"><label for="C1">&nbsp;是否去掉冒号分段</label>
+                <input id="C1" type="checkbox" name="C1" checked="checked"><label for="C1">&nbsp;去掉冒号分段</label>
             </div>
             <div class="ckbox">
-                <input id="C1" type="checkbox" name="C1" checked="checked"><label for="C1">&nbsp;是否合并相邻行</label>
+                <input id="C1" type="checkbox" name="C1" checked="checked"><label for="C1">&nbsp;合并相邻行</label>
             </div>
             <div class="ckbox">
-                <input id="C1" type="checkbox" name="C1" checked="checked"><label for="C1">&nbsp;是否分割过长的段落</label>
+                <input id="C1" type="checkbox" name="C1" checked="checked"><label for="C1">&nbsp;分割过长的段落</label>
             </div>
 		</div>
 		<div class="operate">
