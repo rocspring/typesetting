@@ -22,19 +22,18 @@
 			修改方法：打开文件，选择另存为，在保存按钮左边的编码格式中选择UTF-8。
 			<br><br>
 		</div>
-		<!-- <div>
-			<input id="C1" type="checkbox" name="C1" checked="checked">
-			<lable for="C1">去掉冒号分段</lable>
-		</div>
-		<div>
-			<input id="C2" type="checkbox" name="C2" checked="checked">
-			<lable for="C2">合并相邻行</lable>
-		</div>
-		<div>
-			<input id="C3" type="checkbox" name="C3" checked="checked">
-			<lable for="C3">分割过长的段落</lable>
-		</div> -->
 	<input type="file" id="file" onchange="handleFiles(this.files)"/>
+		<div class="operate">
+			<div class="ckbox">
+                <input id="C1" type="checkbox" name="C1" checked="checked"><label for="C1">&nbsp;是否去掉冒号分段</label>
+            </div>
+            <div class="ckbox">
+                <input id="C1" type="checkbox" name="C1" checked="checked"><label for="C1">&nbsp;是否合并相邻行</label>
+            </div>
+            <div class="ckbox">
+                <input id="C1" type="checkbox" name="C1" checked="checked"><label for="C1">&nbsp;分割过长的段落</label>
+            </div>
+		</div>
 		<div class="operate">
 			<span>排版：</span>
 			<input id="btnTypeSet" type="button" class="button" name="btn" value="排版">
@@ -59,13 +58,17 @@
 			ts = null;
 
 		document.querySelector('#btnTypeSet').addEventListener('click', function(e){
-			var tempStr = document.querySelector('.content textarea').value;
+			var tempStr = document.querySelector('.content textarea').value,
+				checkboxs = document.querySelectorAll('.ckbox input'),
+				isRemoveColnWrap = checkboxs[0].checked,
+				isMergeParagraph = checkboxs[1].checked,
+				isSplitParagraph = checkboxs[2].checked;
 
 			ts = new TypeSetting({
 				content: tempStr,
-				isRemoveColnWrap: true,
-				isMergeParagraph: true,
-				isSplitParagraph: true
+				isRemoveColnWrap: isRemoveColnWrap,
+				isMergeParagraph: isMergeParagraph,
+				isSplitParagraph: isSplitParagraph
 			});
 
 			document.querySelectorAll('.content textarea')[1].value = ts.result;

@@ -49,6 +49,7 @@
 				tempArr = content.split('\n');
 
 			this.contentArr = tempArr;
+			this.paragraphArr = tempArr;
 
 		},
 
@@ -65,7 +66,7 @@
 
 			for (; i < len; i++) {
 				tempLen = paragraphArr[i].length;
-				if (tempLen === 1) {
+				if ((tempLen === 1 && isArray(paragraphArr[i])) || isString(paragraphArr[i])) {
 					resultArr = resultArr.concat(paragraphArr[i]);
 				} else {
 					for (; j < tempLen; j++) {
@@ -97,6 +98,7 @@
 			}
 
 			this.contentArr = remove(contentArr, tempArr);
+			this.paragraphArr = this.contentArr;
 
 
 		},
@@ -110,7 +112,7 @@
 				paragraphArr = [];
 
 			for (; i < len; i++) {
-				if (contentArr[i] !== '' ||  ( contentArr[i] === '' && contentArr[i - 1] === '') ){
+				if (contentArr[i] !== '' || (contentArr[i] === '' && contentArr[i - 1] === '')) {
 					if (!isArray(paragraphArr[j])) {
 						paragraphArr[j] = [];
 					}
@@ -127,9 +129,7 @@
 				l = 0;
 
 			for (; k < paragraphLen; k++) {
-				console.log(k);
 				tempLen = paragraphArr[k].length;
-				console.log(tempLen);
 				if (tempLen >= 1) {
 					for (l = 0; l < tempLen; l++) {
 						tempStr += paragraphArr[k][l];
@@ -176,7 +176,7 @@
 			segment(str, englishMaxLen);
 			tempArr = resultArr;
 			resultArr = [];
-			
+
 			return tempArr;
 		}
 	};
@@ -192,7 +192,7 @@
 			tempChar = '',
 			i, j,
 			surplusStr = '',
-			endSymbolReg = /。|？|！|”|…|\.|\?|\!/;
+			endSymbolReg = /。|？|！|”[^,]|…|\.|\?|\!/;
 
 		if (len <= maxLen) {
 			resultArr.push(str);
@@ -268,6 +268,10 @@
 
 	function isArray(p) {
 		return Object.prototype.toString.call(p) === '[object Array]';
+	}
+
+	function isString(p) {
+		return typeof p === 'string';
 	}
 
 	// 判断一个段落是否是中文
