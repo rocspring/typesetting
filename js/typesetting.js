@@ -69,7 +69,7 @@
 				if ((tempLen === 1 && isArray(paragraphArr[i])) || isString(paragraphArr[i])) {
 					resultArr = resultArr.concat(paragraphArr[i]);
 				} else {
-					for (; j < tempLen; j++) {
+					for (j =0; j < tempLen; j++) {
 						resultArr = resultArr.concat(paragraphArr[i][j]);
 					}
 				}
